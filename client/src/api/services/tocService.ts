@@ -23,7 +23,7 @@ export interface Anchor {
 }
 
 export async function fetchTOCData(): Promise<TOCData> {
-  const response = await fetch('/mocks.json');
+  const response = await fetch('http://localhost:3001/api/mockedData');
 
   if (!response.ok) {
     throw new Error(`Failed to fetch TOC: ${response.statusText}`);
