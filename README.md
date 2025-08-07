@@ -40,7 +40,7 @@ To run the project locally:
 git clone git@github.com:Ekaterina-Kaschenko/table-of-contents.git
 ```
 
-## Run the server
+## 📡📡 Run the server
 
 ### 2. Go to `table-of-contents` folder
 
@@ -66,7 +66,7 @@ npm install
 node server.js
 ```
 
-## Run the frontend in a new terminal
+## 🎨🎨 Run the frontend in a new terminal
 
 ### 6. Go to `client` folder
 
