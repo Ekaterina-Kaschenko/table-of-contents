@@ -1,0 +1,65 @@
+@use '../../global/styles.scss' as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.tree-node-wrapper.highlighted > .tree-node-header {
+  background-color: $color-bg-expanded;
+}
+
+.tree-node-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  color: #000;
+  font-weight: 400;
+  border: none;
+  position: relative;
+  user-select: none;
+}
+
+.tree-node-header:hover {
+  background-color: $color-bg-hover;
+}
+
+.tree-node-header:hover .arrow-icon:not(.expanded) {
+  transform: rotate(-90deg);
+}
+
+.tree-node-header:hover .arrow-icon.expanded {
+  transform: rotate(0deg);
+}
+
+.tree-node-header:focus:not(:focus-visible) {
+  box-shadow: none;
+}
+
+.tree-node-header.selected {
+  background: linear-gradient(135deg, $color-bg-active 0%, $color-bg-active 100%);
+  color: #fff;
+  transform: translateX(0);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.tree-node-header.selected:hover {
+  transform: translateX(0);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+}
+
+.tree-node-header.selected .arrow-icon {
+  color: #fff;
+}
+
+
+.tree-node-wrapper .tree-node-wrapper .tree-node-header {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tree-node-wrapper .tree-node-wrapper .tree-node-header:hover {
+  border-left-color: #e5e7eb;
+}
+
+.tree-node-wrapper .tree-node-wrapper .tree-node-header.selected {
+  border-left-color: #fff;
+}

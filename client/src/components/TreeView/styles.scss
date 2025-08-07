@@ -1,9 +1,5 @@
+@use '../../global/styles.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-$color-border: #d1d1d2;
-$color-bg-active: #6a57ff;
-$color-bg-expanded: #f4f4f4;
-$color-bg-hover: #e2e2e3;
 
 .tree-view-container {
   background: #fff;
@@ -16,70 +12,6 @@ $color-bg-hover: #e2e2e3;
 
 .tree-node-wrapper.highlighted > .tree-node-header {
   background-color: $color-bg-expanded;
-}
-
-.tree-node-header {
-  display: flex;
-  align-items: center;
-  padding: 14px 20px;
-  cursor: pointer;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-  color: #000;
-  font-weight: 400;
-  border: none;
-  position: relative;
-  user-select: none;
-}
-
-.tree-node-header:hover {
-  background-color: $color-bg-hover;
-}
-
-.tree-node-header:hover .arrow-icon:not(.expanded) {
-  transform: rotate(-90deg);
-}
-
-.tree-node-header:hover .arrow-icon.expanded {
-  transform: rotate(0deg);
-}
-
-.tree-node-header:focus:not(:focus-visible) {
-  box-shadow: none;
-}
-
-.tree-node-header.selected {
-  background: linear-gradient(135deg, $color-bg-active 0%, $color-bg-active 100%);
-  color: #fff;
-  transform: translateX(0);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-}
-
-.tree-node-header.selected:hover {
-  transform: translateX(0);
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
-}
-
-.arrow-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  margin-right: 12px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 10px;
-  color: #6b7280;
-  transform: rotate(-90deg);
-  transform-origin: center;
-}
-
-.arrow-icon.expanded {
-  transform: rotate(0deg);
-}
-
-.tree-node-header.selected .arrow-icon {
-  color: #fff;
 }
 
 .tree-node-children {

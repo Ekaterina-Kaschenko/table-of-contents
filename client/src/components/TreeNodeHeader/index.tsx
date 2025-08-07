@@ -1,15 +1,7 @@
 import React from "react";
 import TreeNode from "../TreeNode";
-
-interface Page {
-  id: string;
-  title: string;
-  url?: string;
-  level: number;
-  parentId?: string;
-  pages?: string[];
-  tabIndex?: number;
-}
+import { Page } from "@/api/services/tocService";
+import "./styles.scss";
 
 interface TreeNodeHeaderProps {
   page: Page;

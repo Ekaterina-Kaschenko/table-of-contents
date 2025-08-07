@@ -1,30 +1,14 @@
 import React, { useState, JSX } from "react";
 import TreeNodeHeader from "../TreeNodeHeader";
+import { Page, TreeViewProps } from "@/api/services/tocService";
 import "./styles.scss";
-
-interface Page {
-  id: string;
-  title: string;
-  url?: string;
-  level: number;
-  parentId?: string;
-  pages?: string[];
-  tabIndex?: number;
-}
-
-interface TreeViewProps {
-  entities: {
-    pages: Record<string, Page>;
-  };
-  topLevelIds: string[];
-}
 
 const TreeView: React.FC<TreeViewProps> = ({ entities, topLevelIds }) => {
   const { pages } = entities;
   const [activeId, setActiveId] = useState<string | null>(null);
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
-  // note: removed all useCallback and UseMemo because of using new react-compiler
+  // NOTE: removed all useCallback and UseMemo because of using NEW react-compiler
   const toggleExpand = (id: string): void => {
     setExpandedIds((prev) => {
       const next = new Set(prev);

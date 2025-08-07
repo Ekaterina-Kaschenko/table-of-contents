@@ -7,22 +7,14 @@ export interface Page {
   pages?: string[];
 }
 
-export interface TOCData {
+export interface TreeViewProps {
   entities: {
     pages: Record<string, Page>;
   };
   topLevelIds: string[];
 }
 
-export interface Anchor {
-  id: string;
-  title: string;
-  url: string;
-  anchor: string;
-  level: number;
-}
-
-export async function fetchTOCData(): Promise<TOCData> {
+export async function fetchTOCData(): Promise<TreeViewProps> {
   const response = await fetch('http://localhost:3001/api/mockedData');
 
   if (!response.ok) {

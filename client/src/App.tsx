@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import TreeView from "./components/TreeView";
-import { fetchTOCData, TOCData } from "./api/services/tocService";
+import { fetchTOCData, TreeViewProps } from "./api/services/tocService";
 import "./global/styles.scss";
 
 const App = () => {
-  const [tocData, setTocData] = useState<TOCData | null>(null);
+  const [tocData, setTocData] = useState<TreeViewProps | null>(null);
 
   useEffect(() => {
     fetchTOCData()
