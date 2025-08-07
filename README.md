@@ -38,27 +38,55 @@ To run the project locally:
 
 ```bash
 git clone git@github.com:Ekaterina-Kaschenko/table-of-contents.git
-cd table-of-contents
-
 ```
 
-### 2. Start the backend server
+## Run the server
+
+### 2. Go to `table-of-contents` folder
+
+```bash
+cd table-of-contents
+```
+
+### 3. Go to `server` folder
 
 ```bash
 cd server
+```
+
+### 4. Install the dependencies
+
+```bash
 npm install
+```
+
+### 5. Run the server
+
+```bash
 node server.js
 ```
 
-### 3. Start the frontend (in a new terminal)
+## Run the frontend in a new terminal
+
+### 6. Go to `client` folder
 
 ```bash
 cd client
+```
+
+### 7. Install the dependencies
+
+```bash
 npm install
+```
+
+### 8. Start the frontend
+
+```bash
 npm run build
 ```
 
-### 4. View the app in your browser
+### 9. View the app in your browser
 
 Once the frontend is built and the server is running, open your browser and go to:
 
