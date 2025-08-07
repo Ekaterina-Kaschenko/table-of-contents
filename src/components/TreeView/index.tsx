@@ -83,7 +83,7 @@ const TreeView: React.FC<TreeViewProps> = ({ entities, topLevelIds }) => {
           const hasChildren = Boolean(page.pages?.length);
 
           return (
-            <div key={page.id} className="tree-node-wrapper">
+            <div key={page.id} className={`tree-node-wrapper`}>
               <TreeNodeHeader
                 page={page}
                 className={getItemClassName(page)}

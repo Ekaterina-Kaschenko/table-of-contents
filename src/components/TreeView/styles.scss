@@ -1,15 +1,23 @@
-/* Container */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+$color-border: #d1d1d2;
+$color-bg-active: #6a57ff;
+$color-bg-expanded: #f4f4f4;
+$color-bg-hover: #e2e2e3;
+
 .tree-view-container {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  background: #fff;
+  border: 1px solid $color-border;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   max-width: 400px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
-/* Tree Node Headers */
+.tree-node-header.highlighted {
+  background-color: $color-bg-expanded;
+}
+
 .tree-node-header {
   display: flex;
   align-items: center;
@@ -17,46 +25,32 @@
   cursor: pointer;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
-  background: #ffffff;
-  color: #374151;
+  color: #000;
   font-weight: 400;
   border: none;
   position: relative;
   user-select: none;
 }
 
-/* Hover States */
 .tree-node-header:hover {
-  background-color: #f8fafc;
-}
-
-.tree-node-header:hover .arrow-icon {
-  transform: scale(1.1);
+  background-color: $color-bg-hover;
 }
 
 .tree-node-header:hover .arrow-icon:not(.expanded) {
-  transform: rotate(-90deg) scale(1.1);
+  transform: rotate(-90deg);
 }
 
 .tree-node-header:hover .arrow-icon.expanded {
-  transform: rotate(0deg) scale(1.1);
-}
-
-/* Focus States */
-.tree-node-header:focus {
-  box-shadow: inset 0 0 0 2px #6366f1;
-  z-index: 1;
+  transform: rotate(0deg);
 }
 
 .tree-node-header:focus:not(:focus-visible) {
   box-shadow: none;
 }
 
-/* Active/Selected State */
 .tree-node-header.selected {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #ffffff;
-  font-weight: 500;
+  background: linear-gradient(135deg, $color-bg-active 0%, $color-bg-active 100%);
+  color: #fff;
   transform: translateX(0);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
@@ -66,22 +60,6 @@
   box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
 }
 
-.tree-node-header.selected:focus {
-  box-shadow: inset 0 0 0 2px #ffffff, 0 4px 12px rgba(99, 102, 241, 0.25);
-}
-
-/* Highlighted State (parent items) */
-.tree-node-header.highlighted {
-  background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
-  color: #1e40af;
-  font-weight: 450;
-}
-
-.tree-node-header.highlighted:hover {
-  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
-}
-
-/* Arrow Icon */
 .arrow-icon {
   display: inline-flex;
   align-items: center;
@@ -101,41 +79,26 @@
 }
 
 .tree-node-header.selected .arrow-icon {
-  color: #ffffff;
+  color: #fff;
 }
 
-.tree-node-header.highlighted .arrow-icon {
-  color: #3730a3;
-}
-
-/* Label */
-.label {
-  flex: 1;
-  font-size: 15px;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-}
-
-/* Children Container with Better Animation */
 .tree-node-children {
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   max-height: 0;
   opacity: 0;
   transform: translateY(-8px);
-  background: rgba(248, 250, 252, 0.5);
 }
 
 .tree-node-children.expanded {
   max-height: 2000px;
   opacity: 1;
   transform: translateY(0);
+  background-color: $color-bg-expanded;
 }
 
-/* Nested Item Styling */
 .tree-node-wrapper .tree-node-wrapper .tree-node-header {
-  border-left: 2px solid transparent;
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-left-color 0.2s ease;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tree-node-wrapper .tree-node-wrapper .tree-node-header:hover {
@@ -143,14 +106,17 @@
 }
 
 .tree-node-wrapper .tree-node-wrapper .tree-node-header.selected {
-  border-left-color: #ffffff;
+  border-left-color: #fff;
 }
 
-.tree-node-wrapper .tree-node-wrapper .tree-node-header.highlighted {
-  border-left-color: #6366f1;
+.tree-view-container {
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* Smooth scaling animation for the entire container on load */
+.tree-node-children.expanded .tree-node-wrapper {
+  animation: fadeInUp 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -162,27 +128,6 @@
   }
 }
 
-.tree-view-container {
-  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Add subtle animation stagger for child items */
-.tree-node-children.expanded .tree-node-wrapper {
-  animation: fadeInUp 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.tree-node-children.expanded .tree-node-wrapper:nth-child(2) {
-  animation-delay: 0.03s;
-}
-
-.tree-node-children.expanded .tree-node-wrapper:nth-child(3) {
-  animation-delay: 0.06s;
-}
-
-.tree-node-children.expanded .tree-node-wrapper:nth-child(4) {
-  animation-delay: 0.09s;
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -191,36 +136,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .tree-view-container {
-    background: #1f2937;
-    border-color: #374151;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  }
-  
-  .tree-node-header {
-    background: #1f2937;
-    color: #f3f4f6;
-  }
-  
-  .tree-node-header:hover {
-    background-color: #374151;
-  }
-  
-  .tree-node-header.highlighted {
-    background: linear-gradient(135deg, #312e81 0%, #3730a3 100%);
-    color: #e0e7ff;
-  }
-  
-  .tree-node-children {
-    background: rgba(31, 41, 55, 0.5);
-  }
-  
-  .arrow-icon {
-    color: #9ca3af;
   }
 }
