@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import TableOfContents from "./components/TableOfContents";
+import TreeView from "./components/TreeView";
 import { fetchTOCData, TOCData } from "./api/services/tocService";
 
 function App() {
@@ -22,10 +22,7 @@ function App() {
   return (
     <div style={{ padding: 20 }}>
       <h1>Table of Contents</h1>
-      <TableOfContents
-        entities={tocData.entities}
-        topLevelIds={tocData.topLevelIds}
-      />
+      <TreeView entities={tocData.entities} topLevelIds={tocData.topLevelIds} />
     </div>
   );
 }
