@@ -83,7 +83,10 @@ const TreeView: React.FC<TreeViewProps> = ({ entities, topLevelIds }) => {
           const hasChildren = Boolean(page.pages?.length);
 
           return (
-            <div key={page.id} className={`tree-node-wrapper`}>
+            <div
+              key={page.id}
+              className={`tree-node-wrapper ${isExpanded ? "highlighted" : ""}`}
+            >
               <TreeNodeHeader
                 page={page}
                 className={getItemClassName(page)}
@@ -94,7 +97,6 @@ const TreeView: React.FC<TreeViewProps> = ({ entities, topLevelIds }) => {
 
               {hasChildren && page.pages && (
                 <div
-                  style={{ border: "2px solid green" }}
                   className={`tree-node-children ${
                     isExpanded ? "expanded" : "collapsed"
                   }`}

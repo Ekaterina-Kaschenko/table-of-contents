@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import TreeView from "./components/TreeView";
 import { fetchTOCData, TOCData } from "./api/services/tocService";
+import "./components/core/styles.scss";
 
-function App() {
+const App = () => {
   const [tocData, setTocData] = useState<TOCData | null>(null);
 
   useEffect(() => {
@@ -16,15 +17,12 @@ function App() {
 
   if (!tocData) return <div>Loading Table of Contents...</div>;
 
-  console.log("tocData.entities", tocData.entities);
-  console.log("tocData.topLevelIds", tocData.topLevelIds);
-
   return (
     <div style={{ padding: 20 }}>
       <h1>Table of Contents</h1>
       <TreeView entities={tocData.entities} topLevelIds={tocData.topLevelIds} />
     </div>
   );
-}
+};
 
 export default App;
