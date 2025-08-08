@@ -1,3 +1,5 @@
+@use "./theme.scss";
+
 $color-border: #d1d1d2;
 $color-bg-active: #6a57ff;
 $color-bg-expanded: #f4f4f4;
@@ -6,3 +8,47 @@ $color-bg-hover: #e2e2e3;
 .wrapper {
   padding: 20px;
 }
+
+:root {
+  --radius: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.wrapper {
+  padding: var(--space-5);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+:focus-visible {
+  outline-offset: 2px;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.text-muted { color: var(--color-text-muted); }
+
+* {
+  scrollbar-color: var(--color-border) transparent;
+}
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 999px; }
+*::-webkit-scrollbar-track { background: transparent; }

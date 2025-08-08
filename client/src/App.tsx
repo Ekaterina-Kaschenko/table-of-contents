@@ -3,6 +3,7 @@ import TreeView from "@/components/TreeView";
 import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { fetchTOCData, TreeViewProps } from "@/api/services/tocService";
+import ThemeControls from "@/components/ThemeControls";
 import "./global/styles.scss";
 
 const App = () => {
@@ -15,19 +16,13 @@ const App = () => {
     setError(null);
 
     fetchTOCData()
-      .then((data) => {
-        console.log("TOC data loaded:", data);
-        setTocData(data);
-      })
-      .catch((err) => {
-        console.error("Failed to load TOC:", err);
+      .then((data) => setTocData(data))
+      .catch(() =>
         setError(
           "Sorry, we couldn’t load the Table of Contents. Please check your connection or try again later."
-        );
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+        )
+      )
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -39,7 +34,11 @@ const App = () => {
 
   return (
     <div className="wrapper">
-      <h1>Table of Contents</h1>
+      <header className="app-header">
+        <h1>Table of Contents</h1>
+        <ThemeControls />
+      </header>
+
       <TreeView
         entities={tocData!.entities}
         topLevelIds={tocData!.topLevelIds}

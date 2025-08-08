@@ -1,27 +1,29 @@
 .error-message {
-  background-color: #ffecec;
-  border: 1px solid #ff5c5c;
+  background-color: color-mix(in srgb, var(--color-accent) 15%, transparent); /* soft tinted bg */
+  border: 1px solid var(--color-accent);
   padding: 30px;
   border-radius: 10px;
   text-align: center;
   max-width: 500px;
   margin: 100px auto;
   font-family: 'Segoe UI', sans-serif;
-  color: #a94442;
+  color: var(--color-text);
 
   h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: var(--color-text);
   }
 
   p {
     font-size: 16px;
     margin-bottom: 20px;
+    color: var(--color-text-muted);
   }
 
   .retry-button {
-    background-color: #ff5c5c;
-    color: white;
+    background-color: var(--color-accent);
+    color: var(--color-accent-contrast);
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
@@ -30,7 +32,7 @@
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #d94444;
+      background-color: color-mix(in srgb, var(--color-accent) 85%, black);
     }
   }
 }

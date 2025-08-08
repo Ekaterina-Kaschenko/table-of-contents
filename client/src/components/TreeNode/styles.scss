@@ -1,6 +1,5 @@
 @use '../../global/styles.scss' as *;
 
-
 .arrow-icon {
   display: inline-flex;
   align-items: center;
@@ -8,9 +7,10 @@
   width: 16px;
   height: 16px;
   margin-right: 12px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 10px;
-  color: #6b7280;
+  color: var(--color-text-muted);
   transform: rotate(-90deg);
   transform-origin: center;
 }

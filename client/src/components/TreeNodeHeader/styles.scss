@@ -1,8 +1,7 @@
-@use '../../global/styles.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .tree-node-wrapper.highlighted > .tree-node-header {
-  background-color: $color-bg-expanded;
+  background-color: var(--color-surface-expanded);
 }
 
 .tree-node-header {
@@ -12,7 +11,7 @@
   cursor: pointer;
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
-  color: #000;
+  color: var(--color-text);
   font-weight: 400;
   border: none;
   position: relative;
@@ -20,7 +19,7 @@
 }
 
 .tree-node-header:hover {
-  background-color: $color-bg-hover;
+  background-color: var(--color-surface-hover);
 }
 
 .tree-node-header:hover .arrow-icon:not(.expanded) {
@@ -36,8 +35,8 @@
 }
 
 .tree-node-header.selected {
-  background: linear-gradient(135deg, $color-bg-active 0%, $color-bg-active 100%);
-  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent) 100%);
+  color: var(--color-accent-contrast);
   transform: translateX(0);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
 }
@@ -48,18 +47,17 @@
 }
 
 .tree-node-header.selected .arrow-icon {
-  color: #fff;
+  color: var(--color-accent-contrast);
 }
-
 
 .tree-node-wrapper .tree-node-wrapper .tree-node-header {
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tree-node-wrapper .tree-node-wrapper .tree-node-header:hover {
-  border-left-color: #e5e7eb;
+  border-left-color: var(--color-border);
 }
 
 .tree-node-wrapper .tree-node-wrapper .tree-node-header.selected {
-  border-left-color: #fff;
+  border-left-color: var(--color-accent-contrast);
 }
