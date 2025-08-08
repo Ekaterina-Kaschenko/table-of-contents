@@ -11,7 +11,8 @@ The component is designed for flexibility, performance, and maintainability, fol
 - **Expandable / collapsible topics** with smooth transitions.
 - **Highlighting rules** based on nesting level (first level always highlighted, current topic highlighted).
 - **Anchor display** only after the related page is activated.
-- **Performance-optimized** using `useMemo` and callback removal to leverage the **new React Compiler** in the `TreeView` component.
+- **Performance-optimized** removed `useCallback` and `useMemo` usage to take full advantage of the new React Compiler in the TreeView component.
+- Integrated with ESLint (including eslint-plugin-react-hooks@rc) for compiler-aware linting..
 
 ---
 
