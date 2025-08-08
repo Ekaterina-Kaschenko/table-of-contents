@@ -18,7 +18,7 @@ const config: Config = {
     '\\.svg$': '<rootDir>/__mocks__/svgrMock.tsx',
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/build/']
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/build/', 'mockEntities\\.ts']
 };
 
 export default config;
