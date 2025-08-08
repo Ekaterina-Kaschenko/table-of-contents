@@ -1,6 +1,8 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "../App";
 import { fetchTOCData } from "@/api/services/tocService";
+import { ThemeProvider } from "@/theme/ThemeProvider";
 
 jest.mock("@/api/services/tocService", () => ({
   __esModule: true,
@@ -29,40 +31,53 @@ jest.mock("@/components/LoadingSpinner", () => ({
 
 const mockedFetch = fetchTOCData as jest.MockedFunction<typeof fetchTOCData>;
 
-describe("App", () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
+const renderWithProviders = (ui: React.ReactElement) =>
+  render(<ThemeProvider>{ui}</ThemeProvider>);
+
+beforeEach(() => {
+  jest.resetAllMocks();
+
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: jest.fn().mockImplementation(() => ({
+      matches: false,
+      media: "(prefers-color-scheme: dark)",
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+    })),
   });
 
+  document.documentElement.removeAttribute("data-theme");
+  localStorage.clear();
+});
+
+describe("App", () => {
   it("shows loading spinner initially", () => {
-    mockedFetch.mockReturnValue(new Promise(() => {}));
-    render(<App />);
+    mockedFetch.mockReturnValue(new Promise(() => {})); // pending
+    renderWithProviders(<App />);
     expect(screen.getByTestId("spinner")).toBeInTheDocument();
   });
 
   it("renders TreeView after successful fetch", async () => {
     mockedFetch.mockResolvedValue({
-      entities: { pages: {}, anchors: {}, topLevelIds: [] },
+      entities: { pages: {}, anchors: {} },
       topLevelIds: [],
     } as never);
 
-    render(<App />);
+    renderWithProviders(<App />);
 
     expect(await screen.findByTestId("treeview")).toBeInTheDocument();
     expect(screen.getByText(/Table of Contents/i)).toBeInTheDocument();
   });
 
   it("renders error message on fetch failure", async () => {
-    const errSpy = jest.spyOn(console, "error").mockImplementation(() => {});
     mockedFetch.mockRejectedValue(new Error("Network error"));
 
-    render(<App />);
+    renderWithProviders(<App />);
 
     expect(await screen.findByTestId("error")).toBeInTheDocument();
-    expect(errSpy).toHaveBeenCalledWith(
-      "Failed to load TOC:",
-      expect.any(Error)
-    );
-    errSpy.mockRestore();
+    expect(
+      screen.getByText(/Sorry, we couldn’t load the Table of Contents/i)
+    ).toBeInTheDocument();
   });
 });
