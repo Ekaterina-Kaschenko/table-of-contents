@@ -15,7 +15,7 @@ I did **not** use any global state management tools such as Redux, MobX, or even
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React, SCSS
+- **Frontend**: React (with new `React Compiler` in the `TreeView` component), SCSS
 - **Backend**: Node.js, Express
 - **Data Loading**: Native Fetch API (used server-side to retrieve external JSON data)
 
