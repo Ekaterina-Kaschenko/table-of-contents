@@ -4,6 +4,8 @@ import ErrorMessage from "@/components/ErrorMessage";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { fetchTOCData, TreeViewProps } from "@/api/services/tocService";
 import ThemeControls from "@/components/ThemeControls";
+import SearchBar from "@/components/SearchBar";
+import ComponentDocs from "./components/ComponentDocs";
 import "./global/styles.scss";
 
 const App = () => {
@@ -11,10 +13,7 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const loadData = () => {
-    setLoading(true);
-    setError(null);
-
+  useEffect(() => {
     fetchTOCData()
       .then((data) => setTocData(data))
       .catch(() =>
@@ -23,26 +22,33 @@ const App = () => {
         )
       )
       .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    loadData();
   }, []);
 
   if (loading) return <LoadingSpinner />;
-  if (error) return <ErrorMessage message={error} onRetry={loadData} />;
+  if (error)
+    return <ErrorMessage message={error} onRetry={() => location.reload()} />;
 
   return (
     <div className="wrapper">
       <header className="app-header">
-        <h1>Table of Contents</h1>
-        <ThemeControls />
+        <h1 className="app-title">Table of Contents</h1>
+        <div className="toolbar">
+          <SearchBar
+            endpoint="/api/mockedData"
+            placeholder="Filter topics…"
+            onResults={(data) => setTocData(data)}
+          />
+          <ThemeControls />
+        </div>
       </header>
 
-      <TreeView
-        entities={tocData!.entities}
-        topLevelIds={tocData!.topLevelIds}
-      />
+      <div className="content-grid">
+        <TreeView
+          entities={tocData!.entities}
+          topLevelIds={tocData!.topLevelIds}
+        />
+        <ComponentDocs />
+      </div>
     </div>
   );
 };

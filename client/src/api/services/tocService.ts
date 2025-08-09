@@ -1,26 +1,24 @@
-export interface Page {
+export type Page = {
   id: string;
   title: string;
-  url?: string;
   level: number;
   parentId?: string;
   pages?: string[];
-}
+  url?: string;
+};
 
-export interface TreeViewProps {
-  entities: {
-    pages: Record<string, Page>;
-  };
+export type TreeViewProps = {
+  entities: { pages: Record<string, Page> };
   topLevelIds: string[];
-}
+};
 
-export async function fetchTOCData(): Promise<TreeViewProps> {
-  const response = await fetch('http://localhost:3001/api/mockedData');
+const API_BASE = import.meta.env.VITE_API_BASE ?? "";
+const PARAM = "searchParams";
 
-  if (!response.ok) {
-    throw new Error(`Failed to fetch TOC: ${response.statusText}`);
-  }
+import { getJSON } from "@/api/services/http";
 
-  const data = await response.json();
-  return data;
+export async function fetchTOCData(q = "", signal?: AbortSignal): Promise<TreeViewProps> {
+  const url = new URL(`${API_BASE}/api/mockedData`, window.location.origin);
+  if (q.trim()) url.searchParams.set(PARAM, q.trim());
+  return getJSON<TreeViewProps>(url.toString(), { signal });
 }

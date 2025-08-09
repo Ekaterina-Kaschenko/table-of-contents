@@ -7,6 +7,7 @@ $color-bg-hover: #e2e2e3;
 
 .wrapper {
   padding: 20px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 :root {
@@ -31,12 +32,26 @@ html, body {
   padding: var(--space-5);
 }
 
+
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: var(--space-4);
   margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 :focus-visible {

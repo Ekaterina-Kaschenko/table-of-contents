@@ -1,0 +1,35 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.tree-wrapper {
+  max-width: 420px;
+}
+
+.docs {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.card__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.card__text {
+  font-size: 1rem;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 1rem;
+
+  li + li {
+    margin-top: 0.35rem;
+  }
+}
