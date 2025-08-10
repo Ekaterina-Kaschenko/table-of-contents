@@ -9,6 +9,7 @@ interface TreeNodeHeaderProps {
   isExpanded: boolean;
   hasChildren: boolean;
   onItemClick: (page: Page) => void;
+  nodeRef?: (el: HTMLDivElement | null) => void; // ← NEW
 }
 
 const TreeNodeHeader: React.FC<TreeNodeHeaderProps> = ({
@@ -17,10 +18,9 @@ const TreeNodeHeader: React.FC<TreeNodeHeaderProps> = ({
   isExpanded,
   hasChildren,
   onItemClick,
+  nodeRef,
 }) => {
-  const handleClick = () => {
-    onItemClick(page);
-  };
+  const handleClick = () => onItemClick(page);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -31,6 +31,8 @@ const TreeNodeHeader: React.FC<TreeNodeHeaderProps> = ({
 
   return (
     <div
+      ref={nodeRef}
+      data-id={page.id}
       className={`tree-node-header ${className}`}
       style={{ paddingLeft: `${20 + page.level * 32}px` }}
       tabIndex={0}

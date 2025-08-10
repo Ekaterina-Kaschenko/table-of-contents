@@ -1,0 +1,101 @@
+.custom-input-form {
+  --h: 40px;
+  --ring: var(--color-accent);
+  --ring-soft: color-mix(in srgb, var(--color-accent) 35%, transparent);
+
+  display: inline-flex;
+  align-items: center;
+  height: var(--h);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: calc(var(--radius) + 6px);
+  transition: background-color .15s, border-color .15s, box-shadow .15s;
+
+  &:hover {
+    background: var(--color-surface-hover);
+    border-color: color-mix(in srgb, var(--color-border) 70%, var(--ring) 30%);
+  }
+
+  &:focus-within {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 3px var(--ring-soft);
+    background: var(--color-surface);
+  }
+}
+
+.input-field {
+  flex: 1 1 auto;
+  height: calc(var(--h) - 2px);
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--color-text);
+  min-width: 160px;
+  padding: 0 var(--space-2);
+  transition: background-color .15s;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-surface-hover) 70%, transparent);
+  }
+
+  &:focus,
+  &:focus-visible {
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+.button-submit,
+.button-clear {
+  height: calc(var(--h) - 4px);
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color .15s, transform .08s, box-shadow .15s, border-color .15s;
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface-hover));
+    border-color: color-mix(in srgb, var(--color-border) 60%, var(--color-accent) 40%);
+  }
+
+  &:active:not(:disabled) {
+    background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface-hover));
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-surface),
+      0 0 0 4px var(--ring);
+    border-color: var(--ring);
+  }
+}
+
+.button-submit {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: var(--color-accent);
+  width: 90px;
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--color-accent) 90%, black 10%);
+    border-color: color-mix(in srgb, var(--color-accent) 90%, black 10%);
+  }
+
+  &:active:not(:disabled) {
+    background: color-mix(in srgb, var(--color-accent) 85%, black 15%);
+    border-color: color-mix(in srgb, var(--color-accent) 85%, black 15%);
+  }
+}
+
+.custom-input-form:focus-within .input-field:hover {
+  background: transparent;
+}

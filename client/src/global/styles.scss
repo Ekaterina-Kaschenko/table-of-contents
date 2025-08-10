@@ -54,6 +54,10 @@ html, body {
   gap: var(--space-3);
 }
 
+.toolbar__spacer {
+  flex: 1 1 auto;
+}
+
 :focus-visible {
   outline-offset: 2px;
   border-radius: calc(var(--radius) - 2px);

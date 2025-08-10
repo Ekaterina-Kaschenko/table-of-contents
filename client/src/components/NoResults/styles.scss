@@ -1,0 +1,36 @@
+.no-results {
+  padding: 16px;
+  text-align: center;
+  border: 1px dashed var(--color-border);
+  border-radius: calc(var(--radius) + 6px);
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__hint  {
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+  }
+
+  &__btn {
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--color-surface);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
