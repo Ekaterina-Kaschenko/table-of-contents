@@ -69,7 +69,7 @@ describe("App", () => {
 
   it("renders TreeView after successful fetch with data", async () => {
     mockedFetch.mockResolvedValue({
-      entities: { pages: { A: { id: "A", title: "A" } }, anchors: {} },
+      entities: { pages: { A: { id: "A", title: "A" } } },
       topLevelIds: ["A"],
     } as never);
 
@@ -99,7 +99,7 @@ describe("App", () => {
 
     // 2) backend returns empty tree
     mockedFetch.mockResolvedValue({
-      entities: { pages: {}, anchors: {} },
+      entities: { pages: {} },
       topLevelIds: [],
     } as never);
 

@@ -58,14 +58,5 @@ export const mockEntities = {
       doNotShowWarningLink: true
     }
   },
-  anchors: {
-    Theme_Settings: {
-      id: "Theme_Settings",
-      title: "Theme Settings",
-      url: "themes.html",
-      anchor: "#theme-settings",
-      level: 3
-    }
-  },
   topLevelIds: ["Getting_started"]
 };

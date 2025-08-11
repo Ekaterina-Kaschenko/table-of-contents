@@ -7,7 +7,7 @@ The component is designed for flexibility, performance, and maintainability, fol
 
 ## 🚀 Features
 
-- **Dynamic Table of Contents rendering** based on structured data (`pages`, `anchors`, `topLevelIds`).
+- **Dynamic Table of Contents rendering** based on structured data (`pages`, `topLevelIds`).
 - **Expandable / collapsible topics** with smooth recursive rendering.
 - **Highlighting rules** based on nesting level
   - First level always highlighted
