@@ -4,11 +4,9 @@ const ComponentDocs = () => {
   return (
     <aside className="docs">
       <div className="card">
+        <h3 className="card__title">Hi folks!</h3>
         <p className="card__text">
-          <p className="card__title">Hi folks!</p>
-          This is a short overview of the <strong>
-            Table of Contents
-          </strong>{" "}
+          This is a short overview of the <strong>Table of Contents</strong>{" "}
           component I built for this test task. It renders a nested tree from
           server data, supports light/dark/system themes, searching, selecting
           by topic ID, and smooth scrolling to the active item.

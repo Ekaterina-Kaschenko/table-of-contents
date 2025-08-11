@@ -5,35 +5,54 @@
   align-items: start;
 }
 
-.main-wrapper {
-  width: 400px;
-}
-
-.tree-wrapper {
-  max-width: 420px;
-}
-
 .docs {
   display: grid;
   gap: var(--space-4);
+  align-content: start;
+}
+
+.card {
+  padding: var(--space-4);
 }
 
 .card__title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: var(--space-2);
+  margin: 0 0 var(--space-2);
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.card__subtitle {
+  margin: 0 0 var(--space-2);
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text);
 }
 
 .card__text {
-  font-size: 1rem;
+  margin: 0;
+  color: var(--color-text);
 }
 
 .list {
   margin: 0;
-  padding-left: 1.1rem;
-  font-size: 1rem;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--space-2);
+}
 
-  li + li {
-    margin-top: 0.35rem;
-  }
+.list code {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-hover);
+  font: 500 12px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.card :where(p, ul, ol) + :where(h3, h4) {
+  margin-top: var(--space-4);
+}
+
+.card :where(p + ul, p + ol) {
+  margin-top: var(--space-2);
 }
