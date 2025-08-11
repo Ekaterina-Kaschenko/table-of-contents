@@ -4,27 +4,19 @@ This repository contains a test assignment to build a **Table of Contents** comp
 
 The project is built with **React** and **SCSS**, and uses a **Node.js + Express** server to asynchronously fetch real JSON data from the JetBrains documentation site using the **Fetch API**. This data is served to the frontend through a local API endpoint.
 
-I did **not** use any global state management tools such as Redux, MobX because:
-
-- The component’s logic is localized and doesn’t require shared state across the application.
-- There is no complex data flow or cross-component communication.
-- Keeping the implementation simple makes the code easier to read, maintain, and evaluate.
-- Since the assignment was limited in scope, additional tools would have introduced unnecessary complexity.
-
----
-
 ### ✅ Summary of Completed Work
 
-- **Core Component** – Implemented a fully functional Table of Contents component, styled according to the provided design.
-- **Tree Structure Logic** – The component dynamically builds the tree structure based on the provided data.
-- **Backend Integration** – Developed an Express server to serve all the data for the component.
-- **Testing** – Added unit tests for the key parts of the functionality.
-- **Light/Dark Theme Switching** – Implemented seamless switching between light and dark themes.
-
-#### ⏳ Bonus Plan (requesting time untill Monday)
-
-In addition to the completed core functionality, I plan to work on the remaining optional tasks outlined in the assignment.  
-With a bit more time until **Monday** I’ll be able to complete and deliver these enhancements.
+- **Core Table of Contents Component** – Fully functional and styled according to the provided design.
+- **Recursive Tree Rendering** – The tree is built recursively: starting from `topLevelIds`, rendering each page, and, if it has children, rendering them by calling the same logic again.
+- **Expand/Collapse Nodes** – Users can expand and collapse tree nodes to navigate easily.
+- **Backend Integration (Express)** – Implemented an API endpoint that serves real JSON data fetched from JetBrains documentation.
+- **Server-Side Search with DFS Filtering** – Search requests are handled on the server using a Depth-First Search algorithm, ensuring only matching nodes and their parents are returned.
+- **Search URL Persistence** – Search parameters are saved to the URL, allowing direct link sharing and automatic restoration of results on page reload.
+- **Set Active Topic by ID** – Users can enter a topic ID to automatically scroll to and highlight it. If no topic matches, a friendly “No results” message appears.
+- **No Results Pane** – Clear visual feedback when no search results or no matching topic IDs are found.
+- **Smooth Scrolling & Highlighting** – The active topic is highlighted and smoothly scrolled into view.
+- **Light/Dark/System Theme Switching** – Supports theme switching via a toolbar toggle. System mode adapts to the user’s OS preference.
+- **Unit Testing** – Added tests to verify key parts of the functionality and ensure stability.
 
 ---
 
@@ -34,6 +26,7 @@ With a bit more time until **Monday** I’ll be able to complete and deliver the
 - **Theme Management**: React Context API (used for light/dark/system theme switching)
 - **Backend**: Node.js, Express
 - **Data Loading**: Native Fetch API (used server-side to retrieve external JSON data)
+- **Testing**: React Testing Library + Vitest
 
 ---
 
@@ -109,9 +102,3 @@ Once the frontend is built and the server is running, open your browser and go t
 ```bash
 http://localhost:5173
 ```
-
-## 🎥 Demo
-
-Here’s a quick look at the **Table of Contents** component in action — including theme switching, expanding/collapsing items, and smooth animations.
-
-https://github.com/user-attachments/assets/d4dcad29-e77d-4def-a227-72f58a316e06
