@@ -77,6 +77,12 @@ npm install
 node server.js
 ```
 
+The server will be available at:
+
+```bash
+http://localhost:3001
+```
+
 ## 🎨🎨 Run the frontend in a new terminal
 
 ### 6. Go to `client` folder
