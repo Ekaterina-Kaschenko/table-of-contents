@@ -4,7 +4,7 @@ This repository contains a test assignment to build a **Table of Contents** comp
 
 The project is built with **React** and **SCSS**, and uses a **Node.js + Express** server to asynchronously fetch real JSON data from the JetBrains documentation site using the **Fetch API**. This data is served to the frontend through a local API endpoint.
 
-<img width="2382" height="1456" alt="Screenshot 2025-08-11 at 09 49 29" src="https://github.com/user-attachments/assets/5264a10e-34aa-4bfd-a2e7-f1b4d4fb6cee" />
+<img width="3006" height="1488" alt="Screenshot 2025-08-11 at 10 11 10" src="https://github.com/user-attachments/assets/9cc2471f-3e12-48aa-86ab-c6e00e5533f0" />
 
 ### ✅ Summary of Completed Work
 
