@@ -4,31 +4,33 @@ const ComponentDocs = () => {
   return (
     <aside className="docs">
       <div className="card">
-        {/* <h2 className="card__title">Table of Contents — Demo</h2> */}
         <p className="card__text">
-          This is a small demo of a <strong>Table of Contents</strong> component
-          built with React. It renders a nested tree, supports light/dark
-          themes, and talks to a tiny Express backend.
+          <p className="card__title">Hi folks!</p>
+          This is a short overview of the <strong>
+            Table of Contents
+          </strong>{" "}
+          component I built for this test task. It renders a nested tree from
+          server data, supports light/dark/system themes, searching, selecting
+          by topic ID, and smooth scrolling to the active item.
         </p>
       </div>
 
       <div className="card">
-        <h3 className="card__title">What’s inside</h3>
+        <h3 className="card__title">How the tree is built</h3>
         <ul className="list">
           <li>
-            <strong>Tree rendering:</strong> we get a normalized structure
-            <code>{` { entities: { pages }, topLevelIds } `}</code> and build
-            the tree recursively from <code>topLevelIds</code> down through
-            child ids.
+            The server returns a normalized shape:{" "}
+            <code>{`{ entities: { pages }, topLevelIds }`}</code>.
           </li>
           <li>
-            <strong>Selection:</strong> clicking a row selects it; clicking
-            again toggles expand/collapse. Parents of the selected item are
-            highlighted.
+            The <code>TreeView</code> component renders{" "}
+            <strong>recursively</strong>: start at <code>topLevelIds</code>,
+            render each page, and if it has children, render them by calling the
+            same function again.
           </li>
           <li>
-            <strong>Themes:</strong> light / dark / system via the switcher in
-            the toolbar.
+            Rows can be expanded/collapsed, and selected rows highlight their
+            ancestors for context.
           </li>
         </ul>
       </div>
@@ -37,37 +39,56 @@ const ComponentDocs = () => {
         <h3 className="card__subtitle">Backend (Express)</h3>
         <ul className="list">
           <li>
-            Endpoint: <code>GET /api/mockedData</code>. Optional query:
-            <code> ?searchParams=&lt;query&gt;</code>.
+            Small Express server that proxies JetBrains JSON and optionally
+            filters it.
           </li>
           <li>
-            For now, the server logs the query and returns the full TOC (no
-            filtering yet). Next step: filter on the server and return a trimmed
-            tree.
+            Endpoint:{" "}
+            <code>GET /api/mockedData?searchParams=&lt;query&gt;</code>
+          </li>
+          <li>
+            Filtering is done server-side with a <strong>DFS algorithm</strong>,
+            so only matching nodes and their parents are returned.
           </li>
         </ul>
       </div>
 
       <div className="card">
-        <h3 className="card__subtitle">How to use (search)</h3>
+        <h3 className="card__subtitle">Search</h3>
         <ol className="list">
           <li>
-            Type your text in the input and click <em>Search</em>.
+            Type a keyword (e.g. <code>React</code>) and click <em>Search</em>.
           </li>
           <li>
             The app writes <code>?searchParams=&lt;query&gt;</code> to the URL.
           </li>
+          <li>The backend filters and returns the matching set.</li>
+          <li>The tree updates with only the results that match.</li>
           <li>
-            The frontend calls <code>/api/mockedData?searchParams=…</code>.
-          </li>
-          <li>
-            The response replaces the current data and the tree re-renders.
-          </li>
-          <li>
-            Click <em>Clear</em> to remove the param and load the full TOC
-            again.
+            If there are no matches, a friendly <strong>“No results”</strong>{" "}
+            pane appears with a clear button.
           </li>
         </ol>
+      </div>
+
+      <div className="card">
+        <h3 className="card__subtitle">Set active by ID</h3>
+        <ul className="list">
+          <li>Enter a page ID and click “Set Active”.</li>
+          <li>
+            The tree expands the node’s parents, highlights it in blue, and
+            scrolls it into view.
+          </li>
+          <li>If no topic matches that ID, a clear message is shown.</li>
+        </ul>
+      </div>
+
+      <div className="card">
+        <h3 className="card__subtitle">Themes</h3>
+        <ul className="list">
+          <li>Switch between Light, Dark, or System mode.</li>
+          <li>System mode adapts to your OS preference automatically.</li>
+        </ul>
       </div>
     </aside>
   );
