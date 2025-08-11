@@ -41,6 +41,9 @@ If the server supports the `Last-Modified` header (or ETag), browsers can cache 
 
 Switch from text-based identifiers to **stable numeric IDs**. (now some id's are `Big_Data_Tools_Spark`)
 
+<img width="1520" height="938" alt="Screenshot 2025-08-11 at 11 42 52" src="https://github.com/user-attachments/assets/919cab33-1773-4fbb-85db-7aab2a85baf3" />
+
+
 **Benefits:**
 
 - Smaller payloads (numeric IDs are more compact).
