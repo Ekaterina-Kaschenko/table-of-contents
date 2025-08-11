@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { readQueryFromURL, setQueryInURL } from "@/utils/urlParams";
+import { readQueryFromURL, setQueryInURL } from "@/api/services/urlParams";
 import "./styles.scss";
 
 type Props = {

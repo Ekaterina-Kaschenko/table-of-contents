@@ -8,7 +8,7 @@ import ThemeControls from "@/components/ThemeControls";
 import ComponentDocs from "./components/ComponentDocs";
 import CustomInput from "./components/CustomInput";
 import NoResults from "@/components/NoResults";
-import { readQueryFromURL, setQueryInURL } from "@/utils/urlParams";
+import { readQueryFromURL, setQueryInURL } from "@/api/services/urlParams";
 import "./global/styles.scss";
 
 const App = () => {

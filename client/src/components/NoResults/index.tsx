@@ -1,4 +1,3 @@
-// src/components/NoResults/index.tsx
 import React from "react";
 import "./styles.scss";
 
@@ -13,11 +12,7 @@ const NoResults: React.FC<Props> = ({ visible, query, onClear, className }) => {
   if (!visible) return null;
 
   return (
-    <div
-      className={`no-results ${className ?? ""}`}
-      role="status"
-      aria-live="polite"
-    >
+    <div className={`no-results ${className ?? ""}`} role="status">
       <div className="no-results__title">No results</div>
       {query ? (
         <div className="no-results__hint">Nothing matched “{query}”.</div>
